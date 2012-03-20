@@ -426,15 +426,15 @@ class TestRunner(object):
            return
       a = 0 
       for test_suite in self._GetTestsToRun():
-        logger.Log("<<<<<<<<<<<<<<%s" %test_suite) 
-        logger.Log("<<<<<<<<<<<<<<<num:%s" %a)
+        logger.Log(test_suite) 
+        logger.Log("<num %s>" %a)
         a=a+1
-        logger.Log("<<<<<<<<<<<<<<begin to run test:%s" %test_suite.GetName())
+        logger.Log("<begin test:%s>" %test_suite.GetName())
         try:
           test_suite.Run(self._options, self._adb)
         except errors.WaitForResponseTimedOutError:
           logger.Log("Timed out waiting for response")
-        logger.Log("<<<<<<<<<<<<<<end")
+        logger.Log("<test:end>")
 
     except KeyboardInterrupt:
       logger.Log("Exiting...")
